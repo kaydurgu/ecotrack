@@ -36,8 +36,16 @@ class Data(models.Model):
         return f"Data for {self.sensor.name} at {self.timestamp}"
 
 class Alert(models.Model):
+
+    SENSOR_SEVERITY_CHOICES = [
+        ('high', 'High'),
+        ('medium', 'Medium'),
+        ('low', 'Low'),
+        ('ok', 'Ok'),
+    ]
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE, related_name='alerts')
     description = models.TextField()
     last_timestamp = models.DateTimeField(auto_now=True)
     last_timecheckedby = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     warning_notes = models.TextField(null=True, blank=True)
+    severity = models.CharField(max_length=10, choices=SENSOR_SEVERITY_CHOICES, default='ok')

@@ -31,3 +31,48 @@ class SensorDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
     permission_classes = [IsAdminOrReadOnly]
+class SensorCreateView(generics.CreateAPIView):
+    queryset = Sensor.objects.all()
+    serializer_class = SensorSerializer
+    permission_classes = [IsAdminUser]
+class ActiveSensorListView(generics.ListAPIView):
+    serializer_class = SensorSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    def get_queryset(self):
+        return Sensor.objects.filter(status='active')
+class InactiveSensorListView(generics.ListAPIView):
+    serializer_class = SensorSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    def get_queryset(self):
+        return Sensor.objects.filter(status='inactive')
+class MaintenanceSensorListView(generics.ListAPIView):
+    serializer_class = SensorSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    def get_queryset(self):
+        return Sensor.objects.filter(status='maintenance')
+
+class AlertListView(generics.ListAPIView):
+    queryset = Alert.objects.all()
+    serializer_class = AlertSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+class LowSeverityAlertListView(generics.ListAPIView):
+    queryset = Alert.objects.filter(severity='low')
+    serializer_class = AlertSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class MediumSeverityAlertListView(generics.ListAPIView):
+    queryset = Alert.objects.filter(severity='medium')
+    serializer_class = AlertSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class HighSeverityAlertListView(generics.ListAPIView):
+    queryset = Alert.objects.filter(severity='high')
+    serializer_class = AlertSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class OkSeverityAlertListView(generics.ListAPIView):
+    queryset = Alert.objects.filter(severity='ok')
+    serializer_class = AlertSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
