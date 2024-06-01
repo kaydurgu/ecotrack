@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'user',
-    'air_quality'
+    'air_quality',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
