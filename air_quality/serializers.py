@@ -29,3 +29,5 @@ class SensorSerializer(serializers.ModelSerializer):
 
 
 
+
+

@@ -76,3 +76,53 @@ class OkSeverityAlertListView(generics.ListAPIView):
     serializer_class = AlertSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+class AlertDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Alert.objects.all()
+    serializer_class = AlertSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class AlertUpdateView(generics.UpdateAPIView):
+    queryset = Alert.objects.all()
+    serializer_class = AlertSerializer
+    permission_classes = [permissions.IsAuthenticated ]
+
+class AlertDeleteView(generics.DestroyAPIView):
+    queryset = Alert.objects.all()
+    serializer_class = AlertSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+
+class SensorUpdateView(generics.UpdateAPIView):
+    queryset = Sensor.objects.all()
+    serializer_class = SensorSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+class SensorDeleteView(generics.DestroyAPIView):
+    queryset = Sensor.objects.all()
+    serializer_class = SensorSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+class DataListView(generics.ListAPIView):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class DataDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+class DataCreateView(generics.CreateAPIView):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+class DataUpdateView(generics.UpdateAPIView):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer
+    permission_classes = [IsAdminOrReadOnly]
+
+class DataDeleteView(generics.DestroyAPIView):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer
+    permission_classes = [IsAdminOrReadOnly]
