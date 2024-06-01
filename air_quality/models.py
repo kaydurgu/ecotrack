@@ -24,9 +24,9 @@ class Sensor(models.Model):
 
 class Data(models.Model):
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE, related_name='data')
-    pm25 = models.FloatField()
-    pm10 = models.FloatField()
-    co2 = models.FloatField()
+    pm25 = models.FloatField(null=True, blank=True)
+    pm10 = models.FloatField(null=True, blank=True)
+    co2 = models.FloatField(null=True, blank=True)
     temperature = models.FloatField(null=True, blank=True)
     humidity = models.FloatField(null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)

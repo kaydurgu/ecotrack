@@ -28,6 +28,4 @@ urlpatterns = [
     path('data/', views.DataListView.as_view(), name='data-list'),
     path('data/<int:pk>/', views.DataDetailView.as_view(), name='data-detail'),
     path('data/create/', views.DataCreateView.as_view(), name='data-create'),
-    path('data/<int:pk>/update/', views.DataUpdateView.as_view(), name='data-update'),
-    path('data/<int:pk>/delete/', views.DataDeleteView.as_view(), name='data-delete'),
 ]
