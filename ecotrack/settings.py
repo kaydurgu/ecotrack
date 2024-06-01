@@ -58,6 +58,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+AUTH_USER_MODEL = 'user.UserProfile'
 
 ROOT_URLCONF = 'ecotrack.urls'
 
